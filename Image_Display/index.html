@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Display</title>
+    <style>
+      body {
+        margin:0px;
+        background: url(./img/background_img.jpg);
+      }
+    
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50%;
+    height: 50%;
+    background-color:#F0F8FF ;
+}.container .file_div{
+    position: absolute;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%,-50%);
+    color: #FFD023;
+    font-weight: 800;
+    background-color: #002D62;
+}
+.container .photo_div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80%;
+    height: 60%;
+}
+.photo_div img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width:80%;
+    height: 70%;
+}
+.photo_div #file_name
+{
+  position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+</style>
+    
+</head>
+    
+<body>
+    
+       <div class="container">
+         <div class="file_div">
+            <input type="file" name="image" id="file" class="image_btn" onchange="show_img(event);" accept=".jpg, .jpeg, .png" style="display: none;" required>
+            <p  style="display: inline-block;"><label for="file" style="cursor:pointer">Click to Upload Image</label></p>
+         </div>
+         <div class="photo_div">
+            <img id="img_file" src="">
+            <p id="file_name"></p>
+         </div>
+       </div>
+        
+      <script>
+        function show_img(event){
+          if(event.target.files.length > 0){
+            let src = URL.createObjectURL(event.target.files[0]);
+            let image = document.getElementById("img_file");
+            image.src = src;
+            image.style.display = "block";
+          } 
+          var thefile = document.getElementById('file');
+          // alert('Selected file: ' + name.files.item(0).name);
+          // alert('Selected file: ' + name.files.item(0).size);
+          // alert('Selected file: ' + name.files.item(0).type);
+            document.getElementById('file_name').innerText="Uploaded file:"+ thefile.files.item(0).name;
+        }
+</script>     
+</body>
+</html>
